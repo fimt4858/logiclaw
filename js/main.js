@@ -48,27 +48,56 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollArrow = document.querySelector('.scroll-arrow');
         const header = document.querySelector('header');
         const body = document.body;
+        const logoImg = document.querySelector('.logo img');  // 로고 이미지 요소 선택
+        const originalLogoSrc = logoImg.src;  // 원래 로고 이미지 경로 저장
+        const reverseLogoSrc = originalLogoSrc.replace('logo_icon.png', 'logo_icon_reverse.png');  // 반전된 로고 이미지 경로
         
-        // 초기 로드 시 배너가 전체화면으로 표시되었는지 확인
-        const isFullscreen = heroSection.classList.contains('fullscreen');
+        // 페이지 로드 시 항상 전체화면 모드 설정 (GitHub Pages 호환성 개선)
+        heroSection.classList.add('fullscreen');
+        // 헤더는 보이되, 투명 스타일 적용 (header-hidden 클래스는 이제 사용하지 않음)
+        header.classList.remove('header-hidden');
+        body.classList.remove('scrolled');
+        
+        // 전체화면일 때는 반전된 로고 이미지 사용
+        logoImg.src = reverseLogoSrc;
+        
+        if (scrollArrow) {
+            scrollArrow.style.display = 'block';
+        }
+        
+        // 초기 로드 시 스크롤 위치가 맨 위인지 확인
+        if (window.scrollY > 50) {
+            heroSection.classList.remove('fullscreen');
+            // 헤더 숨김 대신 스크롤 시 스타일 변경만 수행
+            body.classList.add('scrolled');
+            // 스크롤 시 원래 로고 이미지로 변경
+            logoImg.src = originalLogoSrc;
+            if (scrollArrow) {
+                scrollArrow.style.display = 'none';
+            }
+        }
         
         // 스크롤 이벤트 리스너
         window.addEventListener('scroll', function() {
             const scrollPosition = window.scrollY;
             
-            // 스크롤이 시작되면 전체화면 모드 해제 및 헤더 표시
-            if (scrollPosition > 50 && isFullscreen) {
+            // 스크롤이 시작되면 전체화면 모드 해제 및 헤더 스타일 변경
+            if (scrollPosition > 50) {
                 heroSection.classList.remove('fullscreen');
-                header.classList.remove('header-hidden');
+                // 헤더 숨김 대신 스크롤 시 스타일 변경만 수행
                 body.classList.add('scrolled');
+                // 스크롤 시 원래 로고 이미지로 변경
+                logoImg.src = originalLogoSrc;
                 if (scrollArrow) {
                     scrollArrow.style.display = 'none';
                 }
-            } else if (scrollPosition <= 50 && !heroSection.classList.contains('fullscreen')) {
-                // 맨 위로 돌아오면 다시 전체화면 모드로 및 헤더 숨김
+            } else if (scrollPosition <= 50) {
+                // 맨 위로 돌아오면 다시 전체화면 모드로 및 헤더 투명 스타일
                 heroSection.classList.add('fullscreen');
-                header.classList.add('header-hidden');
+                // 헤더 숨김 대신 스크롤 시 스타일 변경만 수행
                 body.classList.remove('scrolled');
+                // 전체화면일 때는 반전된 로고 이미지 사용
+                logoImg.src = reverseLogoSrc;
                 if (scrollArrow) {
                     scrollArrow.style.display = 'block';
                 }
