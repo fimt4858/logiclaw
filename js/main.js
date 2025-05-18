@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const body = document.body;
         const logoImg = document.querySelector('.logo img');  // 로고 이미지 요소 선택
         const originalLogoSrc = logoImg.src;  // 원래 로고 이미지 경로 저장
-        const reverseLogoSrc = originalLogoSrc.replace('logo_icon.png', 'logo_icon_reverse.png');  // 반전된 로고 이미지 경로
+        const reverseLogoSrc = originalLogoSrc.replace('logo.png', 'logo_reverse.png');  // 반전된 로고 이미지 경로
         
         // 페이지 로드 시 항상 전체화면 모드 설정 (GitHub Pages 호환성 개선)
         heroSection.classList.add('fullscreen');
