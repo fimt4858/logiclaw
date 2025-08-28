@@ -946,7 +946,7 @@ footer {
 
 /* Staff 페이지 스타일 */
 .staff-section {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 3rem 2rem;
 }
@@ -969,31 +969,83 @@ footer {
 
 .staff-top {
     display: flex;
-    gap: 2.5rem;
+    gap: 4rem;
     margin-bottom: 2.5rem;
+    align-items: center;
 }
 
-.staff-image {
-    flex: 0 0 250px;
-}
-
-.staff-image img {
-    width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    object-fit: cover;
-}
-
-.staff-info {
+/* Lawtalk 스타일 프로필 */
+.lawtalk-style {
     flex: 1;
 }
 
-.staff-info h2 {
-    color: #333;
-    font-size: 2rem;
+.profile-details {
+    margin-top: 1rem;
+}
+
+.profile-section {
     margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+}
+
+.profile-title {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.3rem;
     border-bottom: 1px solid #eee;
+}
+
+.profile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    color: #777;
+}
+
+.profile-year {
+    display: inline-block;
+    width: 90px;
+    font-weight: 600;
+    color: #666;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    margin-right: 0.8rem;
+}
+
+.profile-list li::before {
+    display: none;
+}
+
+.staff-image {
+    flex: 0 0 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.staff-image img {
+    width: 500px;
+    height: 750px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.staff-info h2 {
+    color: #666 !important;
+    font-size: 2.2em !important;
+    font-weight: 1000 !important;
+    margin-bottom: 10px;
+    text-align: center !important;
 }
 
 .education, .experience {
@@ -1032,6 +1084,7 @@ footer {
     padding: 2rem;
     border-radius: 10px;
     border: 1px solid #eee;
+    margin-top: 2rem;
 }
 
 .introduction p {
@@ -1045,25 +1098,53 @@ footer {
     .staff-top {
         flex-direction: column;
         gap: 1.5rem;
+        align-items: center;
     }
     
     .staff-image {
-        width: 100%;
-        max-width: 300px;
+        flex: none;
+        width: 250px;
         margin: 0 auto;
     }
     
-    .staff-info h2 {
-        font-size: 1.8rem;
-        text-align: center;
+    .staff-image img {
+        width: 250px;
+        height: 310px;
     }
     
-    .education, .experience {
+    .lawtalk-style {
+        width: 100%;
+    }
+    
+    .staff-info h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .profile-section {
         margin-bottom: 1.2rem;
+    }
+    
+    .profile-title {
+        font-size: 1rem;
+    }
+    
+    .profile-list li {
+        font-size: 0.9rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .profile-year {
+        width: auto;
+        margin-bottom: 0.2rem;
+        margin-right: 0;
     }
     
     .introduction {
         padding: 1.5rem;
+        margin-top: 1.5rem;
     }
     
     .introduction p {
