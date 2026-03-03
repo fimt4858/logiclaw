@@ -34,12 +34,14 @@ header {
     top: 0;
     z-index: 1000;
     transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+    min-height: 80px;
 }
 
 /* 홈페이지 초기 상태에서 헤더 스타일 */
 .home-page header {
-    background: transparent;
+    background: rgba(0,0,0,0.3);
     box-shadow: none;
+    backdrop-filter: blur(5px);
 }
 
 /* 스크롤 시 헤더 스타일 변경 */
@@ -81,7 +83,7 @@ header {
 nav {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.5rem;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -93,7 +95,9 @@ nav {
     color: var(--primary-color);
     display: flex;
     align-items: center;
-    height: 100%;
+    height: auto;
+    line-height: 1;
+    overflow: hidden;
 }
 
 .logo a {
@@ -104,17 +108,25 @@ nav {
 }
 
 .logo img {
-    height: 80px;
-    margin-right: 1rem;
+    height: 315px;
+    transition: all 0.3s ease;
+    margin: -108px 0;
 }
 
-/* 홈페이지 로고 이미지에 얇은 하얀색 테두리 추가 - 제거 */
-/* .home-page:not(.scrolled) header .logo img {
-    border: 2px solid white;
-    border-radius: 50%;
-    padding: 2px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-} */
+/* 홈페이지 로고 이미지 동적 변경 */
+.home-page header .logo img {
+    content: url('../images/logo/logo-full-white.svg');
+}
+
+/* 스크롤 시 검은색 로고로 변경 */
+.home-page.scrolled header .logo img {
+    content: url('../images/logo/logo-full-dark.svg');
+}
+
+/* 일반 페이지는 항상 검은색 로고 */
+body:not(.home-page) header .logo img {
+    content: url('../images/logo/logo-full-dark.svg');
+}
 
 .logo-text {
     font-size: 1.5rem;
@@ -152,7 +164,7 @@ main {
 
 /* 일반 페이지 메인 컨텐츠는 항상 헤더 아래 */
 body:not(.home-page) main {
-    margin-top: 80px;
+    margin-top: 120px;
 }
 
 .hero-section {
@@ -359,15 +371,30 @@ footer {
 
 .footer-logo {
     flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
-.footer-logo img {
-    height: 160px;
+.footer-logo .footer-icon {
+    height: 6vw;
     width: auto;
+    margin: 0 0 -1.8vw 0;
+    min-height: 70px;
+    max-height: 140px;
+}
+
+.footer-logo .footer-text {
+    height: 14vw;
+    width: auto;
+    margin: -6vw 0;
+    min-height: 170px;
+    max-height: 350px;
 }
 
 .footer-info {
-    flex: 0 1 auto;
+    flex: 0 1 이 이ㅅuto;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -417,11 +444,24 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* 일반 페이지에서만 헤더 배경 강제 적용 */
+    body:not(.home-page) header {
+        min-height: 100px;
+        background: var(--background-color) !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* 홈페이지는 기본 스타일 유지 */
+    .home-page header {
+        min-height: 100px;
+    }
+    
     nav {
         height: auto;
-        padding: 0.5rem;
+        padding: 0.2rem;
         flex-wrap: wrap;
         justify-content: center;
+        align-items: flex-start;
     }
     
     .logo {
@@ -429,8 +469,8 @@ footer {
     }
     
     .logo img {
-        height: 80px;
-        margin-top: 0;
+        height: 220px;
+        margin: -76px 0;
     }
     
     .logo-text {
@@ -441,6 +481,15 @@ footer {
         justify-content: center;
         flex-wrap: wrap;
         gap: 1.5rem;
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+    
+    /* 일반 페이지에서만 메뉴 배경 적용 */
+    body:not(.home-page) .nav-links {
+        background: var(--background-color);
+        border-top: 1px solid #eee;
+        padding: 1rem 0;
     }
     
     .nav-links a {
@@ -468,8 +517,13 @@ footer {
         gap: 1.5rem;
     }
     
-    .footer-logo img {
-        height: 120px;
+    .footer-logo .footer-icon {
+        height: 70px;
+    }
+    
+    .footer-logo .footer-text {
+        height: 200px;
+        margin: -80px 0;
     }
     
     .footer-info {

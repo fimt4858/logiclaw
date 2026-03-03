@@ -48,18 +48,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const scrollArrow = document.querySelector('.scroll-arrow');
         const header = document.querySelector('header');
         const body = document.body;
-        const logoImg = document.querySelector('.logo img');  // 로고 이미지 요소 선택
-        const originalLogoSrc = logoImg.src;  // 원래 로고 이미지 경로 저장
-        const reverseLogoSrc = originalLogoSrc.replace('EN_Navy_transparent.png', 'EN_White_transparent.png');  // 반전된 로고 이미지 경로
+        
+        // CSS에서 로고 이미지 변경을 처리하므로 JS에서는 로고 이미지 조작 없음
         
         // 페이지 로드 시 항상 전체화면 모드 설정 (GitHub Pages 호환성 개선)
         heroSection.classList.add('fullscreen');
-        // 헤더는 보이되, 투명 스타일 적용 (header-hidden 클래스는 이제 사용하지 않음)
+        // 헤더는 보이되, 투명 스타일 적용
         header.classList.remove('header-hidden');
         body.classList.remove('scrolled');
-        
-        // 전체화면일 때는 반전된 로고 이미지 사용
-        logoImg.src = reverseLogoSrc;
         
         if (scrollArrow) {
             scrollArrow.style.display = 'block';
@@ -70,8 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
             heroSection.classList.remove('fullscreen');
             // 헤더 숨김 대신 스크롤 시 스타일 변경만 수행
             body.classList.add('scrolled');
-            // 스크롤 시 원래 로고 이미지로 변경
-            logoImg.src = originalLogoSrc;
             if (scrollArrow) {
                 scrollArrow.style.display = 'none';
             }
@@ -86,8 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 heroSection.classList.remove('fullscreen');
                 // 헤더 숨김 대신 스크롤 시 스타일 변경만 수행
                 body.classList.add('scrolled');
-                // 스크롤 시 원래 로고 이미지로 변경
-                logoImg.src = originalLogoSrc;
                 if (scrollArrow) {
                     scrollArrow.style.display = 'none';
                 }
@@ -96,8 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 heroSection.classList.add('fullscreen');
                 // 헤더 숨김 대신 스크롤 시 스타일 변경만 수행
                 body.classList.remove('scrolled');
-                // 전체화면일 때는 반전된 로고 이미지 사용
-                logoImg.src = reverseLogoSrc;
                 if (scrollArrow) {
                     scrollArrow.style.display = 'block';
                 }
@@ -114,4 +104,4 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-}); 
+});
