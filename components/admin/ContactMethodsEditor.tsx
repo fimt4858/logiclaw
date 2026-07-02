@@ -36,7 +36,15 @@ export default function ContactMethodsEditor({
         e.preventDefault();
         startTransition(async () => {
           const saved = await saveContactMethods(
-            items.map(({ sort_order: _sortOrder, ...rest }) => rest)
+            items.map((item) => ({
+              id: item.id,
+              icon: item.icon,
+              title: item.title,
+              description: item.description,
+              button_label: item.button_label,
+              button_url: item.button_url,
+              published: item.published,
+            }))
           );
           setResult(saved);
         });
