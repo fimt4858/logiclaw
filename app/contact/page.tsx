@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Hero from "@/components/public/Hero";
 import ContactMethodCards from "@/components/public/ContactMethodCards";
+import ConsultationForm from "@/components/public/ConsultationForm";
 import { getContactMethods, getPage, getSettings } from "@/lib/queries";
 
 export const revalidate = 3600;
@@ -24,6 +25,7 @@ export default async function ContactPage() {
         imagePath={settings.banner_image_path}
       />
       <ContactMethodCards methods={methods} />
+      <ConsultationForm />
     </main>
   );
 }
