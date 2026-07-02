@@ -8,7 +8,7 @@ export const DEFAULT_SETTINGS: Record<string, string> = {
   bus: "버스: JS타워 앞 하차",
   naver_map_url:
     "https://map.naver.com/v5/search/서울특별시 강남구 테헤란로79길 6",
-  copyright: "© 신뢰 법률사무소. All rights reserved.",
+  copyright: "© 2026 신뢰 법률사무소. All rights reserved.",
   banner_image_path: "",
 };
 
