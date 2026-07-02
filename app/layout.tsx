@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/public/Header";
-import Footer from "@/components/public/Footer";
-import { getSettings } from "@/lib/queries";
 import { SITE_NAME } from "@/lib/constants";
 
 const notoSansKr = Noto_Sans_KR({
@@ -29,24 +26,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const settings = await getSettings();
-
   return (
     <html lang="ko" className={notoSansKr.variable}>
-      <body>
-        <Header />
-        {children}
-        <Footer
-          phone={settings.phone}
-          address={settings.address}
-          copyright={settings.copyright}
-        />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
