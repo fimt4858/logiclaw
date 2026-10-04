@@ -1,0 +1,24 @@
+# macOS / Windows 시스템 파일 (폴더 구조·파일명 노출 방지)
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# 비밀번호·API 키 등 환경 설정
+.env
+.env.*
+*.pem
+*.key
+
+# 원본 문서·개인 작업 파일 (웹사이트에 필요 없는 것)
+*.hwp
+*.hwpx
+*.docx
+*.xlsx
+*.pdf
+private/
+drafts/
+
+# 에디터 설정
+.vscode/
+.idea/
